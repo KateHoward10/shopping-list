@@ -28,9 +28,13 @@ form {
 }
 
 .list-item {
+  background-color: #fff;
+  border: 2px dashed #888;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2rem;
+  padding: 0.5rem;
+  margin: 0.5rem 2rem;
+  cursor: move;
 }
 
 .item-name {
