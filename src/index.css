@@ -13,7 +13,7 @@ code {
 }
 
 button {
-  background-color: transparent;
+  background-color: #fff;
   border: none;
   cursor: pointer;
 }
@@ -26,6 +26,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.form-container {
+  background-color: #eee;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 form {
@@ -60,11 +68,18 @@ input {
   padding: 0;
 }
 
-.total {
+.amount {
   text-align: right;
-  margin-bottom: 3rem;
+}
+
+.total {
   text-decoration: underline;
   text-decoration-style: double;
+  margin-bottom: 1rem;
+}
+
+.over-budget {
+  color: #ff0000;
 }
 
 .list-item {

@@ -7,7 +7,7 @@ function AddItemForm({ addItem }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <div className="form-field">
         <label htmlFor="name">Name*</label>
         <input id="name" name="name" required aria-required="true" />

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import List from "./components/List";
 import AddItemForm from "./components/AddItemForm";
+import List from "./components/List";
+import BudgetForm from "./components/BudgetForm";
 
 function App() {
   // Get initial state from localStorage if previously stored
   const stored = localStorage.getItem("shopping-list");
   const [items, setItems] = useState(stored ? JSON.parse(stored) : []);
+  const [budget, setBudget] = useState(localStorage.getItem("budget"));
   const total = items.reduce((acc, cur) => cur.price ? acc + +cur.price : acc, 0);
 
   function addItem(name, price) {
@@ -66,7 +68,8 @@ function App() {
         moveItem={moveItem}
         formatCurrency={formatCurrency}
       />
-      <div className="total">Total: {formatCurrency(total)}</div>
+      <div className={`amount total${total > budget ? " over-budget" : ""}`}>Total: {formatCurrency(total)}</div>
+      <BudgetForm budget={budget} setBudget={setBudget} formatCurrency={formatCurrency} />
     </div>
   );
 }
