@@ -6,13 +6,14 @@ function App() {
   // Get initial state from localStorage if previously stored
   const stored = localStorage.getItem("shopping-list");
   const [items, setItems] = useState(stored ? JSON.parse(stored) : []);
+  const total = items.reduce((acc, cur) => cur.price ? acc + +cur.price : acc, 0);
 
-  function addItem(name) {
+  function addItem(name, price) {
     // Set uuid for new items so they can be uniquely identified
     const id = crypto.randomUUID();
     setItems(existing => [
       ...existing,
-      { id, name, crossed: false , position: existing.length}
+      { id, name, price, crossed: false, position: existing.length}
     ]);
   }
 
@@ -43,16 +44,30 @@ function App() {
     }))
   }
 
+  function formatCurrency(pence) {
+    return (+pence / 100).toLocaleString("en-GB", { style: "currency", currency: "GBP" });
+  }
+
   // Store shopping list in localStorage whenever items updates
   useEffect(() => {
     localStorage.setItem("shopping-list", JSON.stringify(items));
   }, [items]);
 
   return (
-    <>
-      <List items={items} deleteItem={deleteItem} crossItem={crossItem} moveItem={moveItem} />
-      <AddItemForm addItem={addItem} />
-    </>
+    <div className="app">
+      <header>
+        <h1>Shopping List</h1>
+        <AddItemForm addItem={addItem} />
+      </header>
+      <List
+        items={items}
+        deleteItem={deleteItem}
+        crossItem={crossItem}
+        moveItem={moveItem}
+        formatCurrency={formatCurrency}
+      />
+      <div className="total">Total: {formatCurrency(total)}</div>
+    </div>
   );
 }
 

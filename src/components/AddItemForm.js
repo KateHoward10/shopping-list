@@ -1,14 +1,21 @@
 function AddItemForm({ addItem }) {
 
-  function onSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    addItem(e.target.newItem.value);
+    addItem(e.target.name.value, e.target.price.value);
+    e.target.reset();
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <input name="newItem" />
-      <button type="submit">Add item</button>
+    <form onSubmit={handleSubmit}>
+      <div className="form-field">
+        <label htmlFor="name">Name*</label>
+        <input id="name" name="name" required aria-required="true" />
+      </div>
+      <div className="form-field">
+        <label htmlFor="price">Price in pence</label><input id="price" name="price" type="number" min="0" step="1" />
+      </div>
+      <button type="submit" className="submit-button">Add item</button>
     </form>
   );
 }

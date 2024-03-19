@@ -18,8 +18,41 @@ button {
   cursor: pointer;
 }
 
-form {
+.app {
   margin: 2rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+label {
+  font-size: 0.75rem;
+}
+
+input {
+  padding: 0.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+}
+
+.submit-button {
+  margin-top: auto;
+  font-weight: bold;
+  border: 1px solid #888;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
 }
 
 .list {
@@ -27,13 +60,21 @@ form {
   padding: 0;
 }
 
+.total {
+  text-align: right;
+  margin-bottom: 3rem;
+  text-decoration: underline;
+  text-decoration-style: double;
+}
+
 .list-item {
   background-color: #fff;
   border: 2px dashed #888;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
-  margin: 0.5rem 2rem;
+  margin: 0.5rem 0;
   cursor: move;
 }
 

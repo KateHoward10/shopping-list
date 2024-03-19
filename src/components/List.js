@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function List({ items, deleteItem, crossItem, moveItem }) {
+function List({ items, deleteItem, crossItem, moveItem, formatCurrency }) {
   const [draggedItem, setDraggedItem] = useState(null);
   const sorted = items.sort((a, b) => a.position - b.position);
 
@@ -21,7 +21,7 @@ function List({ items, deleteItem, crossItem, moveItem }) {
 
   return (
     <ul className="list" onDragOver={handleDragOver}>
-      {sorted.map(({ id, name, crossed, position }) => (
+      {sorted.map(({ id, name, price, crossed, position }) => (
         <li
           key={id}
           id={id}
@@ -35,6 +35,7 @@ function List({ items, deleteItem, crossItem, moveItem }) {
             className={crossed ? "crossed-item-name" : "item-name"}
           >
             {name}
+            {price ? `, ${formatCurrency(price)}` : ""}
           </span>
           <button onClick={() => deleteItem(id)}>❌</button>
         </li>
