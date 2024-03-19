@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+form {
+  margin: 2rem;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 2rem;
+}
+
+.item-name {
+  cursor: pointer;
+}
+
+.crossed-item-name {
+  text-decoration: line-through;
+}

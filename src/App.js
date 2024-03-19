@@ -15,9 +15,13 @@ function App() {
     setItems(existing => existing.filter(item => item.id !== id));
   }
 
+  function crossItem(id) {
+    setItems(existing => existing.map(item => item.id === id ? { ...item, crossed: true } : item));
+  }
+
   return (
     <>
-      <List items={items} deleteItem={deleteItem} />
+      <List items={items} deleteItem={deleteItem} crossItem={crossItem} />
       <AddItemForm addItem={addItem} />
     </>
   );
