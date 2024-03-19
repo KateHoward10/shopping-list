@@ -93,10 +93,11 @@ input {
   cursor: move;
 }
 
-.item-name {
-  cursor: pointer;
-}
-
 .crossed-item-name {
   text-decoration: line-through;
+}
+
+.tick-button {
+  color: #008000;
+  margin-right: 0.5rem;
 }

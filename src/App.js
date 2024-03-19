@@ -20,13 +20,17 @@ function App() {
   }
 
   function deleteItem(id) {
-    setItems(existing => existing.filter(item => item.id !== id));
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      setItems(existing => existing.filter(item => item.id !== id));
+    }
   }
 
   function crossItem(id) {
-    setItems(existing => existing.map(item => {
-      return item.id === id ? { ...item, crossed: true } : item;
-    }));
+    if (window.confirm("Are you sure you want to cross off this item?")) {
+      setItems(existing => existing.map(item => {
+        return item.id === id ? { ...item, crossed: true } : item;
+      }));
+    }
   }
 
   function moveItem(id, oldPos, newPos) {

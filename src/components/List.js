@@ -30,14 +30,25 @@ function List({ items, deleteItem, crossItem, moveItem, formatCurrency }) {
           onDragStart={() => handleDragStart({ id, position })}
           onDrop={e => handleDrop(e, position)}
         >
-          <span
-            onClick={() => crossItem(id)}
-            className={crossed ? "crossed-item-name" : "item-name"}
-          >
+          <span className={crossed ? "crossed-item-name" : ""}>
             {name}
             {price ? `, ${formatCurrency(price)}` : ""}
           </span>
-          <button onClick={() => deleteItem(id)}>❌</button>
+          <div className="actions">
+            {crossed ? null : (
+              <button
+                onClick={() => crossItem(id)}
+                className="tick-button"
+                aria-label="Cross item off"
+                title="Cross item off"
+              >✔</button>
+            )}
+            <button
+              onClick={() => deleteItem(id)}
+              aria-label="Delete item"
+              title="Delete item"
+            >❌</button>
+          </div>
         </li>
       ))}
     </ul>
