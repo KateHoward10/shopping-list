@@ -6,13 +6,18 @@ import { items as initial } from "./data/items";
 function App() {
   const [items, setItems] = useState(initial);
 
-  function addItem(newItem) {
-    setItems(existing => [...existing, newItem]);
+  function addItem(name) {
+    const id = crypto.randomUUID();
+    setItems(existing => [...existing, { id, name }]);
+  }
+
+  function deleteItem(id) {
+    setItems(existing => existing.filter(item => item.id !== id));
   }
 
   return (
     <>
-      <List items={items} />
+      <List items={items} deleteItem={deleteItem} />
       <AddItemForm addItem={addItem} />
     </>
   );

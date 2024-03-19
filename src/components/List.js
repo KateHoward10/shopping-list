@@ -1,7 +1,12 @@
-function List({items}) {
+function List({ items, deleteItem }) {
   return (
     <ul>
-      {items.map((item, index) => <li key={index}>{item}</li>)}
+      {items.map(({ id, name }) => (
+        <li key={id}>
+          {name}
+          <button onClick={() => deleteItem(id)}>❌</button>
+        </li>
+      ))}
     </ul>
   );
 }
